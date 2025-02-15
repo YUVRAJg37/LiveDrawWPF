@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -12,8 +13,7 @@ public partial class MainWindow : Window
 {
     private double _width = 0;
     private double _height = 0;
-
-    private readonly DrawingManager _drawingManager = new();
+    
     private readonly CanvasVisibilityHandler _canvasVisibilityHandler = new();
     
     public MainWindow()
@@ -30,29 +30,32 @@ public partial class MainWindow : Window
             
         Canvas.SetLeft(ToolBar, (_width / 2) - (ToolBar.ActualHeight/2));
         Canvas.SetTop(ToolBar, 50);
+
+        MainInkCanvas.Height = Height;
+        MainInkCanvas.Width = _width;
         
-        _drawingManager.Initialize();
-    }
-
-    private void Canvas_OnMouseDown(object sender, MouseButtonEventArgs e)
-    {
-        if (e.LeftButton == MouseButtonState.Pressed)
+        MainInkCanvas.DefaultDrawingAttributes = new DrawingAttributes()
         {
-            _drawingManager.StartDrawing(MainCanvas);
-        }
+            Color = Colors.Black,
+            FitToCurve = true,
+            Width = 5,
+            Height = 5
+        };
     }
-
-    private void Canvas_OnMouseUp(object sender, MouseButtonEventArgs e)
-    {
-        _drawingManager.StopDrawing();
-    }
-
-    private void Canvas_OnMouseMove(object sender, MouseEventArgs e)
-    {
-        _drawingManager.ContinueDrawing(e.GetPosition(MainCanvas));
-    }
+    
     private void ToggleCanvasVisibility_OnClick(object sender, RoutedEventArgs e)
     {
-        _canvasVisibilityHandler.ToggleVisibility(this, MainCanvas);
+        _canvasVisibilityHandler.ToggleVisibility(this, MainInkCanvas);
+    }
+
+    private void BrushButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
+        MainInkCanvas.DefaultDrawingAttributes.Color = Colors.Black;
+    }
+
+    private void EraserButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        MainInkCanvas.EditingMode = InkCanvasEditingMode.EraseByStroke;
     }
 }

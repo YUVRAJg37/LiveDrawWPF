@@ -10,11 +10,13 @@
         Background="#01000000"
         WindowState="Maximized"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas Name="MainCanvas" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDown="Canvas_OnMouseDown" MouseUp="Canvas_OnMouseUp" MouseMove="Canvas_OnMouseMove">
+    <Canvas Name="MainCanvas" Background="Transparent">
+        <InkCanvas Name="MainInkCanvas" Background="Transparent" EditingMode="Ink" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <!-- <Canvas Name="MainCanvas" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDown="Canvas_OnMouseDown" MouseUp="Canvas_OnMouseUp" MouseMove="Canvas_OnMouseMove"> -->
         <StackPanel Name="ToolBar" Orientation="Horizontal" Margin="5">
-            <Button Width="25" Height="25" Margin="1" Background="Red"/>
-            <Button Width="25" Height="25" Margin="1" Background="Green"/>
-            <Button Width="25" Height="25" Margin="1" Background="Blue"/>
+            <Button Name="BrushButton" Width="25" Height="25" Margin="1" Background="Red" Click="BrushButton_OnClick"/>
+            <Button Name="EraserButton" Width="25" Height="25" Margin="1" Background="Green" Click="EraserButton_OnClick"/>
+            <Button Name="ClearButton" Width="25" Height="25" Margin="1" Background="Blue"/>
             <Button Name="ToggleCanvasVisibility" Width="25" Height="25" Margin="1" Background="White" Click="ToggleCanvasVisibility_OnClick"/>
         </StackPanel>
     </Canvas>

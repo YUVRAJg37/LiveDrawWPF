@@ -14,7 +14,7 @@ public class CanvasVisibilityHandler
     }
     private CanvasVisibilityMode _canvasVisibilityMode = CanvasVisibilityMode.TRANSPARENT;
 
-    public void ToggleVisibility(Window window, Canvas canvas)
+    public void ToggleVisibility(Window window, InkCanvas canvas)
     {
         switch (_canvasVisibilityMode)
         {

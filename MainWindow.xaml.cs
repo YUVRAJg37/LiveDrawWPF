@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Ink;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace LiveDraw;
@@ -52,10 +51,27 @@ public partial class MainWindow : Window
     {
         MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
         MainInkCanvas.DefaultDrawingAttributes.Color = Colors.Black;
+        ToggleColorPanel(false);
     }
 
     private void EraserButton_OnClick(object sender, RoutedEventArgs e)
     {
         MainInkCanvas.EditingMode = InkCanvasEditingMode.EraseByStroke;
+        ToggleColorPanel(true);
+    }
+    
+    private void ColorsSelectButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        Brush brush = (sender as Button).Background;
+        MainInkCanvas.DefaultDrawingAttributes.Color = ((SolidColorBrush)brush).Color;
+        Console.WriteLine(((SolidColorBrush)brush).Color);
+    }
+
+    private void ToggleColorPanel(bool hide)
+    {
+        if (hide)
+            ColorsPanel.Visibility = Visibility.Hidden;
+        else
+            ColorsPanel.Visibility = Visibility.Visible;
     }
 }

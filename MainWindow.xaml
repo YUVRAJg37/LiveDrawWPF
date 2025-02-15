@@ -13,11 +13,22 @@
     <Canvas Name="MainCanvas" Background="Transparent">
         <InkCanvas Name="MainInkCanvas" Background="Transparent" EditingMode="Ink" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <!-- <Canvas Name="MainCanvas" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDown="Canvas_OnMouseDown" MouseUp="Canvas_OnMouseUp" MouseMove="Canvas_OnMouseMove"> -->
-        <StackPanel Name="ToolBar" Orientation="Horizontal" Margin="5">
-            <Button Name="BrushButton" Width="25" Height="25" Margin="1" Background="Red" Click="BrushButton_OnClick"/>
-            <Button Name="EraserButton" Width="25" Height="25" Margin="1" Background="Green" Click="EraserButton_OnClick"/>
-            <Button Name="ClearButton" Width="25" Height="25" Margin="1" Background="Blue"/>
-            <Button Name="ToggleCanvasVisibility" Width="25" Height="25" Margin="1" Background="White" Click="ToggleCanvasVisibility_OnClick"/>
+        <StackPanel Name="ToolBar" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                <Button Name="BrushButton" Width="25" Height="25" Margin="1" Background="Red" Click="BrushButton_OnClick"/>
+                <Button Name="EraserButton" Width="25" Height="25" Margin="1" Background="Green" Click="EraserButton_OnClick"/>
+                <Button Name="ClearButton" Width="25" Height="25" Margin="1" Background="Blue"/>
+                <Button Name="ToggleCanvasVisibility" Width="25" Height="25" Margin="1" Background="White" Click="ToggleCanvasVisibility_OnClick"/>
+            </StackPanel>
+            <StackPanel Name="ColorsPanel" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                <Button Width="25" Height="25" Margin="1" Background="Red" Click="ColorsSelectButton_OnClick"/>
+                <Button Width="25" Height="25" Margin="1" Background="Green" Click="ColorsSelectButton_OnClick"/>
+                <Button Width="25" Height="25" Margin="1" Background="Blue" Click="ColorsSelectButton_OnClick"/>
+                <Button Width="25" Height="25" Margin="1" Background="Black" Click="ColorsSelectButton_OnClick"/>
+                <Button Width="25" Height="25" Margin="1" Background="Black" Click="ColorsSelectButton_OnClick"/>
+                <Button Width="25" Height="25" Margin="1" Background="Black" Click="ColorsSelectButton_OnClick"/>
+                <Button Width="25" Height="25" Margin="1" Background="Black" Click="ColorsSelectButton_OnClick"/>
+            </StackPanel>
         </StackPanel>
     </Canvas>
 </Window>
